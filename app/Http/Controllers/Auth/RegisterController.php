@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Country;
+use App\City;
+use App\State;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +70,23 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'country_id' => $data['country_id'] ?? null,
+            'state_id' => $data['state_id'] ?? null,
+            'city_id' => $data['city_id'] ?? null,
+            'city_name' => $data['city_id'] ? City::find($data['city_id'])->name : $data['city_name'],
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $countries = Country::all()->pluck('name', 'id');
+        $states = State::all()->pluck('name', 'id');
+
+        return view('auth.register', compact(['countries', 'states']));
     }
 }
