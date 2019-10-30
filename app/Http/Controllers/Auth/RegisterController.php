@@ -84,9 +84,9 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $countries = Country::all()->pluck('name', 'id');
-        $states = State::all()->pluck('name', 'id');
+        $countries = Country::all();
+        $states = State::all();
 
-        return view('auth.register', compact(['countries', 'states']));
+        return view('auth.register', compact('countries', 'states'));
     }
 }

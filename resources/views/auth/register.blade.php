@@ -71,8 +71,8 @@
                         </div>
                         <select class="custom-select{{ $errors->has('country_id') ? ' is-invalid' : '' }}" id="country_id" name="country_id">
                             <option value="" selected>Choose country</option>
-                            @foreach($countries as $id=>$countries)
-                                <option value="{{ $id }}">{{ $countries }}</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->name }}</option>
                             @endforeach
                         </select>
                         @if($errors->has('country_id'))
@@ -90,8 +90,8 @@
                         </div>
                         <select class="custom-select{{ $errors->has('state_id') ? ' is-invalid' : '' }}" id="state_id" name="state_id">
                             <option value="" selected>Choose state</option>
-                            @foreach($states as $id=>$states)
-                                <option value="{{ $id }}">{{ $states }}</option>
+                            @foreach($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
                             @endforeach
                         </select>
                         @if($errors->has('state_id'))
