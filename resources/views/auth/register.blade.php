@@ -124,9 +124,9 @@
                             </span>
                         </div>
                         <input type="text" id="city_name" name="city_name" class="form-control{{ $errors->has('city_name') ? ' is-invalid' : '' }}" placeholder="City">
-                        @if($errors->has('password'))
+                        @if($errors->has('city_name'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
+                                {{ $errors->first('city_name') }}
                             </div>
                         @endif
                     </div>
